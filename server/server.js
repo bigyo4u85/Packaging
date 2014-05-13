@@ -23,10 +23,9 @@ function startServer(requestRouter, requestHandlers, defaultRequestHandler) {
      */
     function onRequest(request, response) {
         var requestPath = url.parse(request.url).pathname;
-        var requestParams = url.parse(request.url).search;
+//        var requestParams = url.parse(request.url).search;
 
-        requestRouter(requestHandlers, defaultRequestHandler, requestPath, requestParams, response);
-        response.end();
+        requestRouter(requestHandlers, defaultRequestHandler, requestPath, request, response);
     }
 
     http.createServer(onRequest).listen(8880);
